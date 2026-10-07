@@ -1,0 +1,167 @@
+.siteHeader {
+    position: fixed;
+    z-index: 20;
+    top: 0;
+    right: 0;
+    left: 0;
+    border-bottom: 1px solid rgb(255 255 255 / 12%);
+    background: #17363b;
+    color: #f7fbfa;
+    box-shadow: 0 8px 24px rgb(17 38 42 / 12%);
+
+    .headerInner {
+        display: flex;
+        width: min(100% - 48px, 1440px);
+        min-height: 72px;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 auto;
+        gap: 36px;
+    }
+
+    .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+
+        &:hover {
+            text-shadow: 0 0 18px rgb(80 218 204 / 30%);
+        }
+    }
+
+    .brandMark {
+        display: grid;
+        width: 36px;
+        height: 36px;
+        place-items: center;
+        border: 1px solid rgb(117 222 211 / 45%);
+        border-radius: 11px;
+        background: #2c5960;
+        color: #9af0e3;
+
+        svg {
+            width: 19px;
+            height: 19px;
+        }
+    }
+
+    .navigation {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        a {
+            padding: 9px 14px;
+            border: 1px solid transparent;
+            border-radius: 9px;
+            color: #c1d5d5;
+            font-size: 14px;
+            font-weight: 600;
+            transition: border-color 160ms ease, box-shadow 160ms ease;
+
+            &:hover,
+            &:focus-visible {
+                border-color: rgb(152 221 213 / 45%);
+                color: #ffffff;
+                box-shadow: 0 0 0 3px rgb(152 221 213 / 10%);
+                outline: none;
+            }
+        }
+    }
+
+    .repositoryLink {
+        display: inline-flex;
+        min-height: 40px;
+        align-items: center;
+        justify-content: center;
+        padding: 0 12px;
+        border: 1px solid #4b6b6e;
+        border-radius: 9px;
+        gap: 8px;
+        color: #f7fbfa;
+        font-size: 13px;
+        font-weight: 600;
+        transition: border-color 160ms ease, box-shadow 160ms ease;
+
+        svg {
+            width: 17px;
+            height: 17px;
+        }
+
+        &:hover,
+        &:focus-visible {
+            border-color: #91d9d0;
+            box-shadow: 0 0 0 3px rgb(145 217 208 / 15%);
+            outline: none;
+        }
+    }
+
+    .menuButton {
+        display: none;
+        width: 40px;
+        height: 40px;
+        place-items: center;
+        border: 1px solid #4b6b6e;
+        border-radius: 9px;
+        background: transparent;
+        color: #f7fbfa;
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    @media (max-width: 760px) {
+        .headerInner {
+            width: min(100% - 32px, 1440px);
+            min-height: 64px;
+            gap: 10px;
+        }
+
+        .menuButton {
+            display: grid;
+            margin-left: auto;
+
+            &:hover,
+            &:focus-visible {
+                border-color: #91d9d0;
+                box-shadow: 0 0 0 3px rgb(145 217 208 / 15%);
+                outline: none;
+            }
+        }
+
+        .navigation,
+        .navigationOpen {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            padding: 12px 16px 16px;
+            border-bottom: 1px solid #446166;
+            background: #17363b;
+            box-shadow: 0 14px 24px rgb(17 38 42 / 14%);
+        }
+
+        .navigation {
+            display: none;
+        }
+
+        .navigationOpen {
+            display: flex;
+        }
+
+        .repositoryLink {
+            min-height: 38px;
+            padding: 0 9px;
+            gap: 6px;
+            font-size: 12px;
+        }
+    }
+}
