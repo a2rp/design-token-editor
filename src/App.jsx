@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import BackToTop from "./components/backToTop/index.jsx";
 import ExportPanel from "./components/exportPanel/index.jsx";
 import SiteHeader from "./components/siteHeader/index.jsx";
 import SiteFooter from "./components/siteFooter/index.jsx";
@@ -124,6 +125,7 @@ const App = () => {
                 <ExportPanel tokens={tokens} />
             </main>
             <SiteFooter />
+            <BackToTop />
         </div>
     );
 };
