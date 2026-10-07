@@ -1,10 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SiteHeader from "./components/siteHeader/index.jsx";
+import SystemPreview from "./components/systemPreview/index.jsx";
 import TokenBoard from "./components/tokenBoard/index.jsx";
 import TokenInspector from "./components/tokenInspector/index.jsx";
 import TokenSidebar from "./components/tokenSidebar/index.jsx";
 import { starterTokens, tokenGroups } from "./data/tokenGroups.js";
 import styles from "./App.module.css";
+
+const storageKey = "design-token-editor-tokens";
+
+const readSavedTokens = () => {
+    try {
+        const savedTokens = localStorage.getItem(storageKey);
+        const parsedTokens = savedTokens ? JSON.parse(savedTokens) : null;
+        return Array.isArray(parsedTokens) ? parsedTokens : starterTokens.map((token) => ({ ...token }));
+    } catch {
+        return starterTokens.map((token) => ({ ...token }));
+    }
+};
 
 const newTokenDefaults = {
     color: { value: "#A4CEC9", kind: "color" },
@@ -16,11 +29,19 @@ const newTokenDefaults = {
 
 const App = () => {
     const [activeGroup, setActiveGroup] = useState("color");
-    const [tokens, setTokens] = useState(starterTokens);
-    const [selectedTokenId, setSelectedTokenId] = useState(starterTokens[0].id);
+    const [tokens, setTokens] = useState(readSavedTokens);
+    const [selectedTokenId, setSelectedTokenId] = useState("color-primary");
     const activeDetails = tokenGroups.find((group) => group.id === activeGroup);
     const activeTokens = tokens.filter((token) => token.group === activeGroup);
-    const selectedToken = tokens.find((token) => token.id === selectedTokenId);
+    const selectedToken = activeTokens.find((token) => token.id === selectedTokenId) || activeTokens[0];
+
+    useEffect(() => {
+        try {
+            localStorage.setItem(storageKey, JSON.stringify(tokens));
+        } catch {
+            return;
+        }
+    }, [tokens]);
 
     const addToken = () => {
         let name = "new-token";
@@ -85,7 +106,7 @@ const App = () => {
                         <TokenBoard
                             group={activeDetails}
                             tokens={activeTokens}
-                            selectedId={selectedTokenId}
+                            selectedId={selectedToken?.id}
                             onSelectToken={setSelectedTokenId}
                             onAddToken={addToken}
                         />
@@ -97,10 +118,7 @@ const App = () => {
                         onDelete={deleteToken}
                     />
                 </section>
-                <section className={styles.placeholder} id="preview">
-                    <h2>Live preview</h2>
-                    <p>See how the design values work together.</p>
-                </section>
+                <SystemPreview tokens={tokens} />
                 <section className={styles.placeholder} id="export">
                     <h2>Export tokens</h2>
                     <p>Copy reusable values into your project.</p>
