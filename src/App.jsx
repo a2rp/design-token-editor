@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ExportPanel from "./components/exportPanel/index.jsx";
 import SiteHeader from "./components/siteHeader/index.jsx";
+import SiteFooter from "./components/siteFooter/index.jsx";
 import SystemPreview from "./components/systemPreview/index.jsx";
 import TokenBoard from "./components/tokenBoard/index.jsx";
 import TokenInspector from "./components/tokenInspector/index.jsx";
@@ -122,6 +123,7 @@ const App = () => {
                 <SystemPreview tokens={tokens} />
                 <ExportPanel tokens={tokens} />
             </main>
+            <SiteFooter />
         </div>
     );
 };
