@@ -1,7 +1,14 @@
+import { useState } from "react";
 import SiteHeader from "./components/siteHeader/index.jsx";
+import TokenSidebar from "./components/tokenSidebar/index.jsx";
+import { starterTokens, tokenGroups } from "./data/tokenGroups.js";
 import styles from "./App.module.css";
 
 const App = () => {
+    const [activeGroup, setActiveGroup] = useState("color");
+    const activeDetails = tokenGroups.find((group) => group.id === activeGroup);
+    const groupCount = starterTokens.filter((token) => token.group === activeGroup).length;
+
     return (
         <div className={styles.appShell} id="top">
             <SiteHeader />
@@ -16,9 +23,26 @@ const App = () => {
                     </div>
                     <span className={styles.saveState}>Changes save on this device</span>
                 </section>
-                <section className={styles.placeholder} id="tokens">
-                    <h2>Token library</h2>
-                    <p>Your design values will be ready to edit here.</p>
+                <section className={styles.workspace} id="tokens" aria-label="Token workspace">
+                    <TokenSidebar
+                        groups={tokenGroups}
+                        tokens={starterTokens}
+                        activeGroup={activeGroup}
+                        onSelectGroup={setActiveGroup}
+                    />
+                    <div className={styles.tokenArea}>
+                        <div className={styles.workspaceHeading}>
+                            <div>
+                                <p className={styles.label}>Token group</p>
+                                <h2>{activeDetails?.label}</h2>
+                            </div>
+                            <span>{groupCount} tokens</span>
+                        </div>
+                        <div className={styles.placeholder}>
+                            <h3>{activeDetails?.label} values</h3>
+                            <p>Select a category to view its design values.</p>
+                        </div>
+                    </div>
                 </section>
                 <section className={styles.placeholder} id="preview">
                     <h2>Live preview</h2>
