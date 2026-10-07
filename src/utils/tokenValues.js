@@ -1,4 +1,4 @@
-export const getTokenValue = (tokens, group, name, fallback) => {
-    const token = tokens.find((item) => item.group === group && item.name === name);
+export const getTokenValue = (tokens, tokenId, fallback) => {
+    const token = tokens.find((item) => item.id === tokenId);
     return token?.value || fallback;
 };

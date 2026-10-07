@@ -3,18 +3,18 @@ import { getTokenValue } from "../../utils/tokenValues.js";
 import styles from "./styles.module.css";
 
 const SystemPreview = ({ tokens }) => {
-    const canvas = getTokenValue(tokens, "color", "canvas", "#EDF1F1");
-    const surface = getTokenValue(tokens, "color", "surface", "#FFFFFF");
-    const ink = getTokenValue(tokens, "color", "ink", "#1C2D32");
-    const muted = getTokenValue(tokens, "color", "muted", "#63777C");
-    const primary = getTokenValue(tokens, "color", "primary", "#087E83");
-    const border = getTokenValue(tokens, "color", "border", "#D7E1E1");
-    const titleSize = getTokenValue(tokens, "type", "title", "32px");
-    const bodySize = getTokenValue(tokens, "type", "body", "16px");
-    const cardRadius = getTokenValue(tokens, "radius", "large", "18px");
-    const buttonRadius = getTokenValue(tokens, "radius", "medium", "10px");
-    const panelShadow = getTokenValue(tokens, "shadow", "card", "0 2px 8px rgb(29 50 55 / 10%)");
-    const space = getTokenValue(tokens, "space", "6", "24px");
+    const canvas = getTokenValue(tokens, "color-canvas", "#EDF1F1");
+    const surface = getTokenValue(tokens, "color-surface", "#FFFFFF");
+    const ink = getTokenValue(tokens, "color-ink", "#1C2D32");
+    const muted = getTokenValue(tokens, "color-muted", "#63777C");
+    const primary = getTokenValue(tokens, "color-primary", "#087E83");
+    const border = getTokenValue(tokens, "color-border", "#D7E1E1");
+    const titleSize = getTokenValue(tokens, "type-title", "32px");
+    const bodySize = getTokenValue(tokens, "type-body", "16px");
+    const cardRadius = getTokenValue(tokens, "radius-large", "18px");
+    const buttonRadius = getTokenValue(tokens, "radius-medium", "10px");
+    const panelShadow = getTokenValue(tokens, "shadow-card", "0 2px 8px rgb(29 50 55 / 10%)");
+    const space = getTokenValue(tokens, "space-6", "24px");
 
     return (
         <section className={styles.systemPreview} id="preview" aria-labelledby="preview-title">
