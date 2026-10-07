@@ -7,12 +7,16 @@ import styles from "./styles.module.css";
 const TokenInspector = ({ token, groupLabel, onUpdate, onDelete }) => {
     const [deleteOpen, setDeleteOpen] = useState(false);
     const isColor = token?.kind === "color";
-    const safeColor = /^#[0-9a-f]{6}$/i.test(token?.value || "") ? token.value : "#087E83";
+    const safeColor = /^#[0-9a-f]{6}$/i.test(token?.value || "")
+        ? token.value
+        : "#087E83";
 
     if (!token) {
         return (
             <aside className={styles.tokenInspector} aria-label="Token details">
-                <p className={styles.emptyMessage}>Choose a token to edit its details.</p>
+                <p className={styles.emptyMessage}>
+                    Choose a token to edit its details.
+                </p>
             </aside>
         );
     }
@@ -36,7 +40,10 @@ const TokenInspector = ({ token, groupLabel, onUpdate, onDelete }) => {
 
             <div className={styles.valuePreview}>
                 {isColor ? (
-                    <span className={styles.colorPreview} style={{ backgroundColor: safeColor }} />
+                    <span
+                        className={styles.colorPreview}
+                        style={{ backgroundColor: safeColor }}
+                    />
                 ) : (
                     <span className={styles.textPreview}>{token.value}</span>
                 )}
@@ -49,7 +56,9 @@ const TokenInspector = ({ token, groupLabel, onUpdate, onDelete }) => {
                     type="text"
                     value={token.name}
                     maxLength={40}
-                    onChange={(event) => onUpdate(token.id, { name: event.target.value })}
+                    onChange={(event) =>
+                        onUpdate(token.id, { name: event.target.value })
+                    }
                 />
             </label>
 
@@ -59,7 +68,9 @@ const TokenInspector = ({ token, groupLabel, onUpdate, onDelete }) => {
                     <input
                         type="text"
                         value={token.value}
-                        onChange={(event) => onUpdate(token.id, { value: event.target.value })}
+                        onChange={(event) =>
+                            onUpdate(token.id, { value: event.target.value })
+                        }
                         aria-label="Token value"
                     />
                     {isColor && (
@@ -67,7 +78,11 @@ const TokenInspector = ({ token, groupLabel, onUpdate, onDelete }) => {
                             <input
                                 type="color"
                                 value={safeColor}
-                                onChange={(event) => onUpdate(token.id, { value: event.target.value.toUpperCase() })}
+                                onChange={(event) =>
+                                    onUpdate(token.id, {
+                                        value: event.target.value.toUpperCase(),
+                                    })
+                                }
                                 aria-label="Choose token color"
                             />
                         </label>

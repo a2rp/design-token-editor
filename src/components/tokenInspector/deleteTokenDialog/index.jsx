@@ -19,7 +19,8 @@ const DeleteTokenDialog = ({ token, open, onClose, onConfirm }) => {
             }
 
             if (event.key === "Tab") {
-                const dialog = event.currentTarget.querySelector("[role='dialog']");
+                const dialog =
+                    event.currentTarget.querySelector("[role='dialog']");
                 const buttons = dialog?.querySelectorAll("button");
                 const firstButton = buttons?.[0];
                 const lastButton = buttons?.[buttons.length - 1];
@@ -27,7 +28,10 @@ const DeleteTokenDialog = ({ token, open, onClose, onConfirm }) => {
                 if (event.shiftKey && document.activeElement === firstButton) {
                     event.preventDefault();
                     lastButton?.focus();
-                } else if (!event.shiftKey && document.activeElement === lastButton) {
+                } else if (
+                    !event.shiftKey &&
+                    document.activeElement === lastButton
+                ) {
                     event.preventDefault();
                     firstButton?.focus();
                 }
@@ -63,13 +67,22 @@ const DeleteTokenDialog = ({ token, open, onClose, onConfirm }) => {
                 </div>
                 <h2 id="delete-token-title">Delete this token?</h2>
                 <p id="delete-token-description">
-                    <strong>{token.name}</strong> will be removed from this token set.
+                    <strong>{token.name}</strong> will be removed from this
+                    token set.
                 </p>
                 <div className={styles.dialogActions}>
-                    <button ref={cancelButtonRef} type="button" onClick={onClose}>
+                    <button
+                        ref={cancelButtonRef}
+                        type="button"
+                        onClick={onClose}
+                    >
                         Keep token
                     </button>
-                    <button className={styles.confirmButton} type="button" onClick={onConfirm}>
+                    <button
+                        className={styles.confirmButton}
+                        type="button"
+                        onClick={onConfirm}
+                    >
                         Delete token
                     </button>
                 </div>

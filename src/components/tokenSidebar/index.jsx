@@ -20,23 +20,36 @@ const TokenSidebar = ({ groups, tokens, activeGroup, onSelectGroup }) => {
             <nav className={styles.groupList} aria-label="Token groups">
                 {groups.map((group) => {
                     const Icon = groupIcons[group.id];
-                    const count = tokens.filter((token) => token.group === group.id).length;
+                    const count = tokens.filter(
+                        (token) => token.group === group.id,
+                    ).length;
                     const isActive = group.id === activeGroup;
 
                     return (
                         <button
-                            className={isActive ? styles.groupButtonActive : styles.groupButton}
+                            className={
+                                isActive
+                                    ? styles.groupButtonActive
+                                    : styles.groupButton
+                            }
                             type="button"
                             key={group.id}
                             onClick={() => onSelectGroup(group.id)}
                             aria-pressed={isActive}
                         >
-                            <span className={styles.groupIcon} aria-hidden="true">
+                            <span
+                                className={styles.groupIcon}
+                                aria-hidden="true"
+                            >
                                 <Icon />
                             </span>
                             <span className={styles.groupText}>
-                                <span className={styles.groupName}>{group.label}</span>
-                                <span className={styles.groupDescription}>{group.description}</span>
+                                <span className={styles.groupName}>
+                                    {group.label}
+                                </span>
+                                <span className={styles.groupDescription}>
+                                    {group.description}
+                                </span>
                             </span>
                             <span className={styles.groupCount}>{count}</span>
                         </button>

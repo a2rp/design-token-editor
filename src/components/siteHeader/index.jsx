@@ -35,7 +35,11 @@ const SiteHeader = () => {
     return (
         <header className={styles.siteHeader} ref={headerRef}>
             <div className={styles.headerInner}>
-                <a className={styles.brand} href="#top" onClick={closeAfterNavigation}>
+                <a
+                    className={styles.brand}
+                    href="#top"
+                    onClick={closeAfterNavigation}
+                >
                     <span className={styles.brandMark} aria-hidden="true">
                         <FiLayers />
                     </span>
@@ -45,22 +49,36 @@ const SiteHeader = () => {
                 <button
                     className={styles.menuButton}
                     type="button"
-                    aria-label={menuOpen ? "Close navigation" : "Open navigation"}
+                    aria-label={
+                        menuOpen ? "Close navigation" : "Open navigation"
+                    }
                     aria-expanded={menuOpen}
                     aria-controls="main-navigation"
                     onClick={() => setMenuOpen(!menuOpen)}
                 >
-                    {menuOpen ? <FiX aria-hidden="true" /> : <FiMenu aria-hidden="true" />}
+                    {menuOpen ? (
+                        <FiX aria-hidden="true" />
+                    ) : (
+                        <FiMenu aria-hidden="true" />
+                    )}
                 </button>
 
                 <nav
-                    className={menuOpen ? styles.navigationOpen : styles.navigation}
+                    className={
+                        menuOpen ? styles.navigationOpen : styles.navigation
+                    }
                     aria-label="Main navigation"
                     id="main-navigation"
                 >
-                    <a href="#tokens" onClick={closeAfterNavigation}>Tokens</a>
-                    <a href="#preview" onClick={closeAfterNavigation}>Preview</a>
-                    <a href="#export" onClick={closeAfterNavigation}>Export</a>
+                    <a href="#tokens" onClick={closeAfterNavigation}>
+                        Tokens
+                    </a>
+                    <a href="#preview" onClick={closeAfterNavigation}>
+                        Preview
+                    </a>
+                    <a href="#export" onClick={closeAfterNavigation}>
+                        Export
+                    </a>
                 </nav>
 
                 <a

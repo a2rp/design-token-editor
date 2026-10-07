@@ -46,20 +46,20 @@ Use **Copy code** to copy the visible format, or **Download file** to save it as
 
 Install Node.js, then run these commands from the project folder:
 
-~~~sh
+```sh
 npm install
 npm run dev
-~~~
+```
 
 Open the local address printed by Vite.
 
 ## Lint, build, and deploy
 
-~~~sh
+```sh
 npm run lint
 npm run build
 npm run deploy
-~~~
+```
 
 ESLint is the project's linter. The deploy command runs the production build first, then publishes the `dist` folder to the `gh-pages` branch. GitHub Pages serves the app at [https://a2rp.github.io/design-token-editor/](https://a2rp.github.io/design-token-editor/). Vite uses `/design-token-editor/` as its base path. Do not commit the generated `dist` folder to `main`.
 

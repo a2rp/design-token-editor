@@ -3,7 +3,13 @@ import { FiPlus, FiSearch } from "react-icons/fi";
 import { getTokenVariable } from "../../utils/tokenNames.js";
 import styles from "./styles.module.css";
 
-const TokenBoard = ({ group, tokens, selectedId, onSelectToken, onAddToken }) => {
+const TokenBoard = ({
+    group,
+    tokens,
+    selectedId,
+    onSelectToken,
+    onAddToken,
+}) => {
     const [searchTerm, setSearchTerm] = useState("");
     const visibleTokens = tokens.filter((token) => {
         const searchText = (token.name + " " + token.value).toLowerCase();
@@ -23,10 +29,14 @@ const TokenBoard = ({ group, tokens, selectedId, onSelectToken, onAddToken }) =>
 
         if (token.kind === "fontSize" || token.kind === "fontWeight") {
             const fontSize = token.kind === "fontSize" ? token.value : "20px";
-            const fontWeight = token.kind === "fontWeight" ? token.value : "600";
+            const fontWeight =
+                token.kind === "fontWeight" ? token.value : "600";
 
             return (
-                <span className={styles.typeSample} style={{ fontSize, fontWeight }}>
+                <span
+                    className={styles.typeSample}
+                    style={{ fontSize, fontWeight }}
+                >
                     Aa
                 </span>
             );
@@ -43,17 +53,30 @@ const TokenBoard = ({ group, tokens, selectedId, onSelectToken, onAddToken }) =>
         }
 
         if (token.kind === "shadow") {
-            return <span className={styles.shadowSample} style={{ boxShadow: token.value }} />;
+            return (
+                <span
+                    className={styles.shadowSample}
+                    style={{ boxShadow: token.value }}
+                />
+            );
         }
 
         const length = Number.parseFloat(token.value);
         const barWidth = Math.max(10, Math.min(length * 2, 112));
 
-        return <span className={styles.spaceSample} style={{ width: barWidth + "px" }} />;
+        return (
+            <span
+                className={styles.spaceSample}
+                style={{ width: barWidth + "px" }}
+            />
+        );
     };
 
     return (
-        <section className={styles.tokenBoard} aria-labelledby="token-board-title">
+        <section
+            className={styles.tokenBoard}
+            aria-labelledby="token-board-title"
+        >
             <div className={styles.boardToolbar}>
                 <label className={styles.searchField}>
                     <FiSearch aria-hidden="true" />
@@ -65,7 +88,11 @@ const TokenBoard = ({ group, tokens, selectedId, onSelectToken, onAddToken }) =>
                         aria-label="Find a token"
                     />
                 </label>
-                <button className={styles.addButton} type="button" onClick={onAddToken}>
+                <button
+                    className={styles.addButton}
+                    type="button"
+                    onClick={onAddToken}
+                >
                     <FiPlus aria-hidden="true" />
                     <span>Add token</span>
                 </button>
@@ -76,7 +103,9 @@ const TokenBoard = ({ group, tokens, selectedId, onSelectToken, onAddToken }) =>
                     <p className={styles.label}>Token group</p>
                     <h2 id="token-board-title">{group.label}</h2>
                 </div>
-                <span className={styles.tokenCount}>{tokens.length} values</span>
+                <span className={styles.tokenCount}>
+                    {tokens.length} values
+                </span>
             </div>
 
             {visibleTokens.length ? (
@@ -87,7 +116,11 @@ const TokenBoard = ({ group, tokens, selectedId, onSelectToken, onAddToken }) =>
 
                         return (
                             <button
-                                className={isSelected ? styles.tokenCardSelected : styles.tokenCard}
+                                className={
+                                    isSelected
+                                        ? styles.tokenCardSelected
+                                        : styles.tokenCard
+                                }
                                 type="button"
                                 key={token.id}
                                 onClick={() => onSelectToken(token.id)}
@@ -97,9 +130,15 @@ const TokenBoard = ({ group, tokens, selectedId, onSelectToken, onAddToken }) =>
                                     {renderPreview(token)}
                                 </span>
                                 <span className={styles.cardDetails}>
-                                    <span className={styles.tokenName}>{token.name}</span>
-                                    <span className={styles.tokenValue}>{token.value}</span>
-                                    <span className={styles.variableName}>{variableName}</span>
+                                    <span className={styles.tokenName}>
+                                        {token.name}
+                                    </span>
+                                    <span className={styles.tokenValue}>
+                                        {token.value}
+                                    </span>
+                                    <span className={styles.variableName}>
+                                        {variableName}
+                                    </span>
                                 </span>
                             </button>
                         );

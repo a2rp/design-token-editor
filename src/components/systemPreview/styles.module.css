@@ -70,7 +70,9 @@
     .sampleCard {
         min-width: 0;
         border: 1px solid;
-        transition: border-color 150ms ease, box-shadow 150ms ease;
+        transition:
+            border-color 150ms ease,
+            box-shadow 150ms ease;
 
         &:hover {
             border-color: #90bdb8;
@@ -124,7 +126,9 @@
         font-weight: 700;
         gap: 5px;
         cursor: pointer;
-        transition: border-color 150ms ease, box-shadow 150ms ease;
+        transition:
+            border-color 150ms ease,
+            box-shadow 150ms ease;
 
         svg {
             width: 14px;

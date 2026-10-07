@@ -60,7 +60,9 @@
             color: #c1d5d5;
             font-size: 14px;
             font-weight: 600;
-            transition: border-color 160ms ease, box-shadow 160ms ease;
+            transition:
+                border-color 160ms ease,
+                box-shadow 160ms ease;
 
             &:hover,
             &:focus-visible {
@@ -84,7 +86,9 @@
         color: #f7fbfa;
         font-size: 13px;
         font-weight: 600;
-        transition: border-color 160ms ease, box-shadow 160ms ease;
+        transition:
+            border-color 160ms ease,
+            box-shadow 160ms ease;
 
         svg {
             width: 17px;

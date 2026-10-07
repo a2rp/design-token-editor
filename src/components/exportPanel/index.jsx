@@ -6,8 +6,26 @@ import styles from "./styles.module.css";
 const ExportPanel = ({ tokens }) => {
     const [format, setFormat] = useState("css");
     const [status, setStatus] = useState("");
-    const cssText = ":root {\n" + tokens.map((token) => "  " + getTokenVariable(token) + ": " + token.value + ";").join("\n") + "\n}";
-    const jsonText = JSON.stringify(tokens.map(({ id, group, name, value, kind }) => ({ id, group, name, value, kind })), null, 2);
+    const cssText =
+        ":root {\n" +
+        tokens
+            .map(
+                (token) =>
+                    "  " + getTokenVariable(token) + ": " + token.value + ";",
+            )
+            .join("\n") +
+        "\n}";
+    const jsonText = JSON.stringify(
+        tokens.map(({ id, group, name, value, kind }) => ({
+            id,
+            group,
+            name,
+            value,
+            kind,
+        })),
+        null,
+        2,
+    );
     const currentCode = format === "css" ? cssText : jsonText;
 
     const copyCode = async () => {
@@ -15,13 +33,16 @@ const ExportPanel = ({ tokens }) => {
             await navigator.clipboard.writeText(currentCode);
             setStatus((format === "css" ? "CSS" : "JSON") + " copied.");
         } catch {
-            setStatus("Clipboard access is unavailable. Select and copy the code below.");
+            setStatus(
+                "Clipboard access is unavailable. Select and copy the code below.",
+            );
         }
     };
 
     const downloadCode = () => {
         const fileType = format === "css" ? "text/css" : "application/json";
-        const fileName = format === "css" ? "design-tokens.css" : "design-tokens.json";
+        const fileName =
+            format === "css" ? "design-tokens.css" : "design-tokens.json";
         const file = new Blob([currentCode], { type: fileType });
         const fileUrl = URL.createObjectURL(file);
         const link = document.createElement("a");
@@ -34,19 +55,38 @@ const ExportPanel = ({ tokens }) => {
     };
 
     return (
-        <section className={styles.exportPanel} id="export" aria-labelledby="export-title">
+        <section
+            className={styles.exportPanel}
+            id="export"
+            aria-labelledby="export-title"
+        >
             <div className={styles.exportHeading}>
                 <div>
                     <p className={styles.label}>Export</p>
                     <h2 id="export-title">Take your tokens with you.</h2>
-                    <p>Copy the CSS variables or download your token list as JSON.</p>
+                    <p>
+                        Copy the CSS variables or download your token list as
+                        JSON.
+                    </p>
                 </div>
                 <div className={styles.exportActions}>
-                    <button className={styles.secondaryButton} type="button" onClick={copyCode}>
-                        {status.includes("copied") ? <FiCheck aria-hidden="true" /> : <FiCopy aria-hidden="true" />}
+                    <button
+                        className={styles.secondaryButton}
+                        type="button"
+                        onClick={copyCode}
+                    >
+                        {status.includes("copied") ? (
+                            <FiCheck aria-hidden="true" />
+                        ) : (
+                            <FiCopy aria-hidden="true" />
+                        )}
                         <span>Copy code</span>
                     </button>
-                    <button className={styles.primaryButton} type="button" onClick={downloadCode}>
+                    <button
+                        className={styles.primaryButton}
+                        type="button"
+                        onClick={downloadCode}
+                    >
                         <FiDownload aria-hidden="true" />
                         <span>Download file</span>
                     </button>
@@ -55,9 +95,17 @@ const ExportPanel = ({ tokens }) => {
 
             <div className={styles.codeCard}>
                 <div className={styles.codeToolbar}>
-                    <div className={styles.formatTabs} role="group" aria-label="Export format">
+                    <div
+                        className={styles.formatTabs}
+                        role="group"
+                        aria-label="Export format"
+                    >
                         <button
-                            className={format === "css" ? styles.formatTabActive : styles.formatTab}
+                            className={
+                                format === "css"
+                                    ? styles.formatTabActive
+                                    : styles.formatTab
+                            }
                             type="button"
                             aria-pressed={format === "css"}
                             onClick={() => {
@@ -68,7 +116,11 @@ const ExportPanel = ({ tokens }) => {
                             CSS
                         </button>
                         <button
-                            className={format === "json" ? styles.formatTabActive : styles.formatTab}
+                            className={
+                                format === "json"
+                                    ? styles.formatTabActive
+                                    : styles.formatTab
+                            }
                             type="button"
                             aria-pressed={format === "json"}
                             onClick={() => {
@@ -79,10 +131,22 @@ const ExportPanel = ({ tokens }) => {
                             JSON
                         </button>
                     </div>
-                    <span className={styles.fileName}>{format === "css" ? "design-tokens.css" : "design-tokens.json"}</span>
+                    <span className={styles.fileName}>
+                        {format === "css"
+                            ? "design-tokens.css"
+                            : "design-tokens.json"}
+                    </span>
                 </div>
-                <pre className={styles.codeOutput}><code>{currentCode}</code></pre>
-                <p className={styles.exportStatus} role="status" aria-live="polite">{status}</p>
+                <pre className={styles.codeOutput}>
+                    <code>{currentCode}</code>
+                </pre>
+                <p
+                    className={styles.exportStatus}
+                    role="status"
+                    aria-live="polite"
+                >
+                    {status}
+                </p>
             </div>
         </section>
     );

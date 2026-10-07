@@ -13,16 +13,27 @@ const SystemPreview = ({ tokens }) => {
     const bodySize = getTokenValue(tokens, "type-body", "16px");
     const cardRadius = getTokenValue(tokens, "radius-large", "18px");
     const buttonRadius = getTokenValue(tokens, "radius-medium", "10px");
-    const panelShadow = getTokenValue(tokens, "shadow-card", "0 2px 8px rgb(29 50 55 / 10%)");
+    const panelShadow = getTokenValue(
+        tokens,
+        "shadow-card",
+        "0 2px 8px rgb(29 50 55 / 10%)",
+    );
     const space = getTokenValue(tokens, "space-6", "24px");
 
     return (
-        <section className={styles.systemPreview} id="preview" aria-labelledby="preview-title">
+        <section
+            className={styles.systemPreview}
+            id="preview"
+            aria-labelledby="preview-title"
+        >
             <div className={styles.previewHeading}>
                 <div>
                     <p className={styles.label}>Preview</p>
                     <h2 id="preview-title">See your system at work.</h2>
-                    <p>Changes in the token library update this sample right away.</p>
+                    <p>
+                        Changes in the token library update this sample right
+                        away.
+                    </p>
                 </div>
                 <span className={styles.liveStatus}>
                     <span aria-hidden="true" />
@@ -30,7 +41,10 @@ const SystemPreview = ({ tokens }) => {
                 </span>
             </div>
 
-            <div className={styles.previewStage} style={{ backgroundColor: canvas }}>
+            <div
+                className={styles.previewStage}
+                style={{ backgroundColor: canvas }}
+            >
                 <article
                     className={styles.sampleCard}
                     style={{
@@ -42,17 +56,30 @@ const SystemPreview = ({ tokens }) => {
                     }}
                 >
                     <div className={styles.cardTop}>
-                        <span className={styles.productMark} style={{ backgroundColor: primary }}>
+                        <span
+                            className={styles.productMark}
+                            style={{ backgroundColor: primary }}
+                        >
                             <FiLayers aria-hidden="true" />
                         </span>
-                        <span className={styles.cardCategory} style={{ color: muted }}>
+                        <span
+                            className={styles.cardCategory}
+                            style={{ color: muted }}
+                        >
                             Workspace
                         </span>
                         <button
                             className={styles.openButton}
                             type="button"
-                            onClick={() => document.getElementById("tokens")?.scrollIntoView({ behavior: "smooth" })}
-                            style={{ backgroundColor: primary, borderRadius: buttonRadius }}
+                            onClick={() =>
+                                document
+                                    .getElementById("tokens")
+                                    ?.scrollIntoView({ behavior: "smooth" })
+                            }
+                            style={{
+                                backgroundColor: primary,
+                                borderRadius: buttonRadius,
+                            }}
                         >
                             Edit tokens
                             <FiArrowUpRight aria-hidden="true" />
@@ -61,10 +88,17 @@ const SystemPreview = ({ tokens }) => {
                     <h3 style={{ color: ink, fontSize: titleSize }}>
                         Bring clarity to every choice.
                     </h3>
-                    <p className={styles.cardDescription} style={{ color: muted, fontSize: bodySize }}>
-                        Keep shared decisions visible and help every detail feel connected.
+                    <p
+                        className={styles.cardDescription}
+                        style={{ color: muted, fontSize: bodySize }}
+                    >
+                        Keep shared decisions visible and help every detail feel
+                        connected.
                     </p>
-                    <div className={styles.cardFooter} style={{ borderColor: border }}>
+                    <div
+                        className={styles.cardFooter}
+                        style={{ borderColor: border }}
+                    >
                         <span style={{ color: muted }}>
                             <FiCheck aria-hidden="true" />
                             All values linked
@@ -77,9 +111,18 @@ const SystemPreview = ({ tokens }) => {
                     <h3>Applied values</h3>
                     <p>These are used by the sample card.</p>
                     <ul>
-                        <li><span>Primary</span><code>{primary}</code></li>
-                        <li><span>Title size</span><code>{titleSize}</code></li>
-                        <li><span>Card radius</span><code>{cardRadius}</code></li>
+                        <li>
+                            <span>Primary</span>
+                            <code>{primary}</code>
+                        </li>
+                        <li>
+                            <span>Title size</span>
+                            <code>{titleSize}</code>
+                        </li>
+                        <li>
+                            <span>Card radius</span>
+                            <code>{cardRadius}</code>
+                        </li>
                     </ul>
                 </aside>
             </div>

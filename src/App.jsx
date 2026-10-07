@@ -16,7 +16,9 @@ const readSavedTokens = () => {
     try {
         const savedTokens = localStorage.getItem(storageKey);
         const parsedTokens = savedTokens ? JSON.parse(savedTokens) : null;
-        return Array.isArray(parsedTokens) ? parsedTokens : starterTokens.map((token) => ({ ...token }));
+        return Array.isArray(parsedTokens)
+            ? parsedTokens
+            : starterTokens.map((token) => ({ ...token }));
     } catch {
         return starterTokens.map((token) => ({ ...token }));
     }
@@ -36,7 +38,9 @@ const App = () => {
     const [selectedTokenId, setSelectedTokenId] = useState("color-primary");
     const activeDetails = tokenGroups.find((group) => group.id === activeGroup);
     const activeTokens = tokens.filter((token) => token.group === activeGroup);
-    const selectedToken = activeTokens.find((token) => token.id === selectedTokenId) || activeTokens[0];
+    const selectedToken =
+        activeTokens.find((token) => token.id === selectedTokenId) ||
+        activeTokens[0];
 
     useEffect(() => {
         try {
@@ -50,7 +54,11 @@ const App = () => {
         let name = "new-token";
         let suffix = 2;
 
-        while (tokens.some((token) => token.group === activeGroup && token.name === name)) {
+        while (
+            tokens.some(
+                (token) => token.group === activeGroup && token.name === name,
+            )
+        ) {
             name = "new-token-" + suffix;
             suffix += 1;
         }
@@ -67,12 +75,18 @@ const App = () => {
     };
 
     const updateToken = (tokenId, updates) => {
-        setTokens(tokens.map((token) => token.id === tokenId ? { ...token, ...updates } : token));
+        setTokens(
+            tokens.map((token) =>
+                token.id === tokenId ? { ...token, ...updates } : token,
+            ),
+        );
     };
 
     const deleteToken = (tokenId) => {
         const nextTokens = tokens.filter((token) => token.id !== tokenId);
-        const nextSelection = nextTokens.find((token) => token.group === activeGroup);
+        const nextSelection = nextTokens.find(
+            (token) => token.group === activeGroup,
+        );
 
         setTokens(nextTokens);
         setSelectedTokenId(nextSelection?.id || "");
@@ -93,12 +107,19 @@ const App = () => {
                         <p className={styles.label}>Design system workspace</p>
                         <h1>One source for every design decision.</h1>
                         <p className={styles.description}>
-                            Keep colors, type, spacing, and shape values ready to use across your product.
+                            Keep colors, type, spacing, and shape values ready
+                            to use across your product.
                         </p>
                     </div>
-                    <span className={styles.saveState}>Changes save on this device</span>
+                    <span className={styles.saveState}>
+                        Changes save on this device
+                    </span>
                 </section>
-                <section className={styles.workspace} id="tokens" aria-label="Token workspace">
+                <section
+                    className={styles.workspace}
+                    id="tokens"
+                    aria-label="Token workspace"
+                >
                     <TokenSidebar
                         groups={tokenGroups}
                         tokens={tokens}

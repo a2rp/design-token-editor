@@ -38,7 +38,9 @@
         border-radius: 9px;
         background: #fff8f7;
         color: var(--danger);
-        transition: border-color 150ms ease, box-shadow 150ms ease;
+        transition:
+            border-color 150ms ease,
+            box-shadow 150ms ease;
 
         svg {
             width: 16px;

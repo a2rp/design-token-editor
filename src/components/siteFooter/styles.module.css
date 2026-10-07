@@ -42,7 +42,9 @@
         place-items: center;
         border: 1px solid transparent;
         border-radius: 10px;
-        transition: border-color 150ms ease, box-shadow 150ms ease;
+        transition:
+            border-color 150ms ease,
+            box-shadow 150ms ease;
 
         img {
             width: 36px;
@@ -75,7 +77,9 @@
         color: var(--ink-muted);
         font-size: 11px;
         gap: 5px;
-        transition: border-color 150ms ease, box-shadow 150ms ease;
+        transition:
+            border-color 150ms ease,
+            box-shadow 150ms ease;
 
         svg {
             width: 13px;
