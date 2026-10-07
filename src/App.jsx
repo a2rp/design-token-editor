@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import ExportPanel from "./components/exportPanel/index.jsx";
 import SiteHeader from "./components/siteHeader/index.jsx";
 import SystemPreview from "./components/systemPreview/index.jsx";
 import TokenBoard from "./components/tokenBoard/index.jsx";
@@ -119,10 +120,7 @@ const App = () => {
                     />
                 </section>
                 <SystemPreview tokens={tokens} />
-                <section className={styles.placeholder} id="export">
-                    <h2>Export tokens</h2>
-                    <p>Copy reusable values into your project.</p>
-                </section>
+                <ExportPanel tokens={tokens} />
             </main>
         </div>
     );

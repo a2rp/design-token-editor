@@ -1,0 +1,201 @@
+.exportPanel {
+    margin-top: 24px;
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    scroll-margin-top: 98px;
+
+    .exportHeading {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 18px;
+
+        h2 {
+            margin-top: 4px;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.035em;
+        }
+
+        p:not(.label) {
+            margin-top: 4px;
+            color: var(--ink-muted);
+            font-size: 13px;
+        }
+    }
+
+    .label {
+        color: var(--accent-dark);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    .exportActions {
+        display: flex;
+        flex: 0 0 auto;
+        gap: 8px;
+    }
+
+    .secondaryButton,
+    .primaryButton {
+        display: inline-flex;
+        min-height: 40px;
+        align-items: center;
+        justify-content: center;
+        padding: 0 12px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: #ffffff;
+        font-size: 12px;
+        font-weight: 700;
+        gap: 7px;
+        transition: border-color 150ms ease, box-shadow 150ms ease;
+
+        svg {
+            width: 15px;
+            height: 15px;
+        }
+
+        &:hover,
+        &:focus-visible {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgb(8 126 131 / 10%);
+            outline: none;
+        }
+    }
+
+    .primaryButton {
+        border-color: var(--accent);
+        background: var(--accent);
+        color: #ffffff;
+
+        &:hover,
+        &:focus-visible {
+            border-color: var(--accent-dark);
+            box-shadow: 0 0 0 3px rgb(8 126 131 / 16%);
+        }
+    }
+
+    .codeCard {
+        overflow: hidden;
+        margin-top: 20px;
+        border: 1px solid #294c52;
+        border-radius: 12px;
+        background: #17363b;
+        color: #e6f1ef;
+    }
+
+    .codeToolbar {
+        display: flex;
+        min-height: 54px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 14px;
+        border-bottom: 1px solid rgb(255 255 255 / 12%);
+        gap: 12px;
+    }
+
+    .formatTabs {
+        display: flex;
+        padding: 3px;
+        border: 1px solid #3a5b60;
+        border-radius: 8px;
+        gap: 3px;
+    }
+
+    .formatTab,
+    .formatTabActive {
+        min-width: 54px;
+        min-height: 30px;
+        padding: 0 9px;
+        border: 1px solid transparent;
+        border-radius: 6px;
+        background: transparent;
+        color: #b6cdcd;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        font-weight: 700;
+        transition: border-color 150ms ease, box-shadow 150ms ease;
+
+        &:hover,
+        &:focus-visible {
+            border-color: #7ba6a3;
+            box-shadow: 0 0 0 3px rgb(145 217 208 / 10%);
+            outline: none;
+        }
+    }
+
+    .formatTabActive {
+        border-color: #5d8b89;
+        background: #2c5559;
+        color: #ffffff;
+    }
+
+    .fileName {
+        overflow: hidden;
+        color: #9fb6b8;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .codeOutput {
+        overflow: auto;
+        min-height: 240px;
+        max-height: 430px;
+        padding: 20px;
+        color: #c7e3dd;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        line-height: 1.75;
+        tab-size: 2;
+
+        code {
+            font: inherit;
+            white-space: pre;
+        }
+    }
+
+    .exportStatus {
+        min-height: 24px;
+        padding: 0 20px 12px;
+        color: #9ae1ce;
+        font-size: 12px;
+    }
+
+    @media (max-width: 800px) {
+        padding: 22px;
+
+        .exportHeading {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+    }
+
+    @media (max-width: 520px) {
+        .exportActions {
+            width: 100%;
+
+            button {
+                flex: 1;
+                padding: 0 8px;
+            }
+        }
+
+        .codeToolbar {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+        .codeOutput {
+            padding: 16px;
+            font-size: 11px;
+        }
+    }
+}
