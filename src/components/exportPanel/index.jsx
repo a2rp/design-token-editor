@@ -29,7 +29,7 @@ const ExportPanel = ({ tokens }) => {
         link.href = fileUrl;
         link.download = fileName;
         link.click();
-        URL.revokeObjectURL(fileUrl);
+        setTimeout(() => URL.revokeObjectURL(fileUrl), 1000);
         setStatus(fileName + " downloaded.");
     };
 

@@ -48,13 +48,15 @@ const SystemPreview = ({ tokens }) => {
                         <span className={styles.cardCategory} style={{ color: muted }}>
                             Workspace
                         </span>
-                        <span
+                        <button
                             className={styles.openButton}
+                            type="button"
+                            onClick={() => document.getElementById("tokens")?.scrollIntoView({ behavior: "smooth" })}
                             style={{ backgroundColor: primary, borderRadius: buttonRadius }}
                         >
-                            Open
+                            Edit tokens
                             <FiArrowUpRight aria-hidden="true" />
-                        </span>
+                        </button>
                     </div>
                     <h3 style={{ color: ink, fontSize: titleSize }}>
                         Bring clarity to every choice.

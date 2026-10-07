@@ -123,6 +123,7 @@
         font-size: 12px;
         font-weight: 700;
         gap: 5px;
+        cursor: pointer;
         transition: border-color 150ms ease, box-shadow 150ms ease;
 
         svg {
