@@ -1,13 +1,42 @@
 import { useState } from "react";
 import SiteHeader from "./components/siteHeader/index.jsx";
+import TokenBoard from "./components/tokenBoard/index.jsx";
 import TokenSidebar from "./components/tokenSidebar/index.jsx";
 import { starterTokens, tokenGroups } from "./data/tokenGroups.js";
 import styles from "./App.module.css";
 
+const newTokenDefaults = {
+    color: { value: "#A4CEC9", kind: "color" },
+    type: { value: "16px", kind: "fontSize" },
+    space: { value: "16px", kind: "length" },
+    radius: { value: "8px", kind: "length" },
+    shadow: { value: "0 4px 12px rgb(29 50 55 / 12%)", kind: "shadow" },
+};
+
 const App = () => {
     const [activeGroup, setActiveGroup] = useState("color");
+    const [tokens, setTokens] = useState(starterTokens);
+    const [selectedTokenId, setSelectedTokenId] = useState(starterTokens[0].id);
     const activeDetails = tokenGroups.find((group) => group.id === activeGroup);
-    const groupCount = starterTokens.filter((token) => token.group === activeGroup).length;
+    const activeTokens = tokens.filter((token) => token.group === activeGroup);
+
+    const addToken = () => {
+        const token = {
+            id: "custom-" + Date.now(),
+            group: activeGroup,
+            name: "new-token",
+            ...newTokenDefaults[activeGroup],
+        };
+
+        setTokens([...tokens, token]);
+        setSelectedTokenId(token.id);
+    };
+
+    const selectGroup = (groupId) => {
+        setActiveGroup(groupId);
+        const firstToken = tokens.find((token) => token.group === groupId);
+        setSelectedTokenId(firstToken?.id || "");
+    };
 
     return (
         <div className={styles.appShell} id="top">
@@ -26,22 +55,18 @@ const App = () => {
                 <section className={styles.workspace} id="tokens" aria-label="Token workspace">
                     <TokenSidebar
                         groups={tokenGroups}
-                        tokens={starterTokens}
+                        tokens={tokens}
                         activeGroup={activeGroup}
-                        onSelectGroup={setActiveGroup}
+                        onSelectGroup={selectGroup}
                     />
                     <div className={styles.tokenArea}>
-                        <div className={styles.workspaceHeading}>
-                            <div>
-                                <p className={styles.label}>Token group</p>
-                                <h2>{activeDetails?.label}</h2>
-                            </div>
-                            <span>{groupCount} tokens</span>
-                        </div>
-                        <div className={styles.placeholder}>
-                            <h3>{activeDetails?.label} values</h3>
-                            <p>Select a category to view its design values.</p>
-                        </div>
+                        <TokenBoard
+                            group={activeDetails}
+                            tokens={activeTokens}
+                            selectedId={selectedTokenId}
+                            onSelectToken={setSelectedTokenId}
+                            onAddToken={addToken}
+                        />
                     </div>
                 </section>
                 <section className={styles.placeholder} id="preview">

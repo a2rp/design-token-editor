@@ -1,0 +1,252 @@
+.tokenBoard {
+    .boardToolbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    .searchField {
+        display: flex;
+        width: min(100%, 340px);
+        min-height: 42px;
+        align-items: center;
+        padding: 0 12px;
+        border: 1px solid var(--border);
+        border-radius: 9px;
+        background: var(--surface-muted);
+        color: var(--ink-muted);
+        gap: 8px;
+
+        &:focus-within {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgb(8 126 131 / 10%);
+        }
+
+        svg {
+            width: 17px;
+            height: 17px;
+            flex: 0 0 17px;
+        }
+
+        input {
+            width: 100%;
+            min-width: 0;
+            border: 0;
+            background: transparent;
+            color: var(--ink);
+            font-size: 13px;
+            outline: none;
+
+            &::placeholder {
+                color: #89999c;
+            }
+        }
+    }
+
+    .addButton {
+        display: inline-flex;
+        min-height: 42px;
+        align-items: center;
+        justify-content: center;
+        padding: 0 14px;
+        border: 1px solid var(--accent);
+        border-radius: 9px;
+        background: var(--accent);
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: 700;
+        gap: 7px;
+        transition: border-color 150ms ease, box-shadow 150ms ease;
+
+        svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        &:hover,
+        &:focus-visible {
+            border-color: var(--accent-dark);
+            box-shadow: 0 0 0 4px rgb(8 126 131 / 14%);
+            outline: none;
+        }
+    }
+
+    .boardHeading {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        margin: 24px 0 16px;
+        gap: 12px;
+
+        h2 {
+            margin-top: 3px;
+            font-size: 23px;
+            font-weight: 700;
+            letter-spacing: -0.035em;
+        }
+    }
+
+    .label {
+        color: var(--ink-muted);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+    }
+
+    .tokenCount {
+        padding-bottom: 3px;
+        color: var(--ink-muted);
+        font-family: var(--font-mono);
+        font-size: 11px;
+    }
+
+    .tokenGrid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 11px;
+    }
+
+    .tokenCard,
+    .tokenCardSelected {
+        overflow: hidden;
+        min-width: 0;
+        border: 1px solid var(--border);
+        border-radius: 11px;
+        background: var(--surface);
+        text-align: left;
+        transition: border-color 150ms ease, box-shadow 150ms ease;
+
+        &:hover,
+        &:focus-visible {
+            border-color: #8bbfbb;
+            box-shadow: 0 6px 18px rgb(29 50 55 / 9%);
+            outline: none;
+        }
+    }
+
+    .tokenCardSelected {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 2px rgb(8 126 131 / 16%);
+    }
+
+    .previewArea {
+        display: grid;
+        height: 94px;
+        place-items: center;
+        border-bottom: 1px solid var(--border);
+        background-color: #f6f8f7;
+        background-image: linear-gradient(45deg, #e9efee 25%, transparent 25%), linear-gradient(-45deg, #e9efee 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #e9efee 75%), linear-gradient(-45deg, transparent 75%, #e9efee 75%);
+        background-position: 0 0, 0 6px, 6px -6px, -6px 0;
+        background-size: 12px 12px;
+    }
+
+    .colorSample {
+        width: 52px;
+        height: 52px;
+        border: 1px solid rgb(28 45 50 / 12%);
+        border-radius: 13px;
+        box-shadow: 0 5px 14px rgb(28 45 50 / 10%);
+    }
+
+    .typeSample {
+        color: var(--ink);
+        line-height: 1;
+    }
+
+    .radiusSample {
+        width: 60px;
+        height: 44px;
+        border: 1px solid #8db7b4;
+        background: #d8eeeb;
+    }
+
+    .spaceSample {
+        height: 9px;
+        border-radius: 99px;
+        background: var(--accent);
+    }
+
+    .shadowSample {
+        width: 64px;
+        height: 44px;
+        border: 1px solid #e8eeee;
+        border-radius: 8px;
+        background: #ffffff;
+    }
+
+    .cardDetails {
+        display: grid;
+        min-width: 0;
+        padding: 11px 12px 12px;
+        gap: 2px;
+    }
+
+    .tokenName {
+        overflow: hidden;
+        color: var(--ink);
+        font-size: 13px;
+        font-weight: 700;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .tokenValue,
+    .variableName {
+        overflow: hidden;
+        color: var(--ink-muted);
+        font-family: var(--font-mono);
+        font-size: 11px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .variableName {
+        margin-top: 4px;
+        color: #89999c;
+        font-size: 10px;
+    }
+
+    .emptyState {
+        padding: 60px 24px;
+        border: 1px dashed var(--border);
+        border-radius: 12px;
+        text-align: center;
+
+        h3 {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        p {
+            margin-top: 4px;
+            color: var(--ink-muted);
+            font-size: 13px;
+        }
+    }
+
+    @media (max-width: 560px) {
+        .boardToolbar {
+            align-items: stretch;
+            flex-direction: column;
+        }
+
+        .searchField {
+            width: 100%;
+        }
+
+        .addButton {
+            align-self: flex-start;
+        }
+
+        .tokenGrid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 8px;
+        }
+
+        .previewArea {
+            height: 80px;
+        }
+    }
+}

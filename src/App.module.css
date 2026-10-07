@@ -59,32 +59,11 @@
 
     .tokenArea {
         min-width: 0;
-        padding: 24px;
+        padding: 20px;
         border: 1px solid var(--border);
         border-radius: 15px;
         background: var(--surface);
         box-shadow: var(--shadow);
-    }
-
-    .workspaceHeading {
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        margin-bottom: 20px;
-        gap: 16px;
-
-        h2 {
-            margin-top: 4px;
-            font-size: 24px;
-            font-weight: 700;
-            letter-spacing: -0.035em;
-        }
-
-        > span {
-            color: var(--ink-muted);
-            font-family: var(--font-mono);
-            font-size: 12px;
-        }
     }
 
     .placeholder {
@@ -137,7 +116,7 @@
 
         .tokenArea,
         .placeholder {
-            padding: 20px;
+            padding: 18px;
         }
     }
 }
