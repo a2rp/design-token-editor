@@ -1,0 +1,191 @@
+.tokenInspector {
+    min-width: 0;
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+
+    .inspectorHeading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--border);
+        gap: 12px;
+
+        h2 {
+            margin-top: 2px;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+    }
+
+    .groupLabel {
+        color: var(--accent-dark);
+        font-size: 11px;
+        font-weight: 700;
+    }
+
+    .deleteButton {
+        display: grid;
+        width: 36px;
+        height: 36px;
+        flex: 0 0 36px;
+        place-items: center;
+        border: 1px solid #ead5d3;
+        border-radius: 9px;
+        background: #fff8f7;
+        color: var(--danger);
+        transition: border-color 150ms ease, box-shadow 150ms ease;
+
+        svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        &:hover,
+        &:focus-visible {
+            border-color: var(--danger);
+            box-shadow: 0 0 0 3px rgb(189 75 66 / 12%);
+            outline: none;
+        }
+    }
+
+    .valuePreview {
+        display: grid;
+        min-height: 114px;
+        place-items: center;
+        padding: 12px;
+        margin: 16px 0;
+        border: 1px solid var(--border);
+        border-radius: 11px;
+        background: var(--surface-muted);
+        gap: 6px;
+    }
+
+    .colorPreview {
+        width: 42px;
+        height: 42px;
+        border: 1px solid rgb(28 45 50 / 14%);
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgb(28 45 50 / 11%);
+    }
+
+    .textPreview {
+        max-width: 100%;
+        overflow: hidden;
+        color: var(--ink);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .previewName {
+        color: var(--ink-muted);
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .field {
+        display: grid;
+        margin-top: 14px;
+        gap: 6px;
+
+        > span {
+            color: var(--ink-muted);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            min-width: 0;
+            min-height: 40px;
+            padding: 0 10px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: #ffffff;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            outline: none;
+
+            &:focus {
+                border-color: var(--accent);
+                box-shadow: 0 0 0 3px rgb(8 126 131 / 10%);
+            }
+        }
+    }
+
+    .valueField {
+        display: flex;
+        min-width: 0;
+        align-items: center;
+        gap: 7px;
+    }
+
+    .colorPicker {
+        display: grid;
+        width: 40px;
+        height: 40px;
+        flex: 0 0 40px;
+        place-items: center;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: #ffffff;
+
+        input {
+            width: 27px;
+            height: 27px;
+            border: 0;
+            background: transparent;
+            cursor: pointer;
+        }
+    }
+
+    .variableInfo {
+        display: grid;
+        margin-top: 20px;
+        padding-top: 14px;
+        border-top: 1px solid var(--border);
+        gap: 6px;
+
+        > span {
+            color: var(--ink-muted);
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        code {
+            overflow: hidden;
+            padding: 7px 8px;
+            border-radius: 6px;
+            background: #e9f3f1;
+            color: var(--accent-dark);
+            font-family: var(--font-mono);
+            font-size: 11px;
+            text-overflow: ellipsis;
+        }
+
+        p,
+        .emptyMessage {
+            color: var(--ink-muted);
+            font-size: 11px;
+        }
+    }
+
+    .emptyMessage {
+        padding: 40px 10px;
+        color: var(--ink-muted);
+        font-size: 13px;
+        text-align: center;
+    }
+
+    @media (max-width: 900px) {
+        .valuePreview {
+            min-height: 96px;
+        }
+    }
+}

@@ -51,7 +51,7 @@
 
     .workspace {
         display: grid;
-        grid-template-columns: 240px minmax(0, 1fr);
+        grid-template-columns: 240px minmax(0, 1fr) 286px;
         align-items: start;
         gap: 18px;
         scroll-margin-top: 98px;
@@ -87,9 +87,23 @@
         }
     }
 
+    @media (max-width: 1200px) {
+        .workspace {
+            grid-template-columns: 220px minmax(0, 1fr);
+        }
+
+        .workspace > :nth-child(3) {
+            grid-column: 2;
+        }
+    }
+
     @media (max-width: 900px) {
         .workspace {
             grid-template-columns: 1fr;
+        }
+
+        .workspace > :nth-child(3) {
+            grid-column: auto;
         }
     }
 

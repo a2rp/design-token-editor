@@ -1,6 +1,7 @@
 import { useState } from "react";
 import SiteHeader from "./components/siteHeader/index.jsx";
 import TokenBoard from "./components/tokenBoard/index.jsx";
+import TokenInspector from "./components/tokenInspector/index.jsx";
 import TokenSidebar from "./components/tokenSidebar/index.jsx";
 import { starterTokens, tokenGroups } from "./data/tokenGroups.js";
 import styles from "./App.module.css";
@@ -19,17 +20,38 @@ const App = () => {
     const [selectedTokenId, setSelectedTokenId] = useState(starterTokens[0].id);
     const activeDetails = tokenGroups.find((group) => group.id === activeGroup);
     const activeTokens = tokens.filter((token) => token.group === activeGroup);
+    const selectedToken = tokens.find((token) => token.id === selectedTokenId);
 
     const addToken = () => {
+        let name = "new-token";
+        let suffix = 2;
+
+        while (tokens.some((token) => token.group === activeGroup && token.name === name)) {
+            name = "new-token-" + suffix;
+            suffix += 1;
+        }
+
         const token = {
             id: "custom-" + Date.now(),
             group: activeGroup,
-            name: "new-token",
+            name,
             ...newTokenDefaults[activeGroup],
         };
 
         setTokens([...tokens, token]);
         setSelectedTokenId(token.id);
+    };
+
+    const updateToken = (tokenId, updates) => {
+        setTokens(tokens.map((token) => token.id === tokenId ? { ...token, ...updates } : token));
+    };
+
+    const deleteToken = (tokenId) => {
+        const nextTokens = tokens.filter((token) => token.id !== tokenId);
+        const nextSelection = nextTokens.find((token) => token.group === activeGroup);
+
+        setTokens(nextTokens);
+        setSelectedTokenId(nextSelection?.id || "");
     };
 
     const selectGroup = (groupId) => {
@@ -68,6 +90,12 @@ const App = () => {
                             onAddToken={addToken}
                         />
                     </div>
+                    <TokenInspector
+                        token={selectedToken}
+                        groupLabel={activeDetails?.label}
+                        onUpdate={updateToken}
+                        onDelete={deleteToken}
+                    />
                 </section>
                 <section className={styles.placeholder} id="preview">
                     <h2>Live preview</h2>

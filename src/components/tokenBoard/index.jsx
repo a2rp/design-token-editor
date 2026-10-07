@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FiPlus, FiSearch } from "react-icons/fi";
+import { getTokenVariable } from "../../utils/tokenNames.js";
 import styles from "./styles.module.css";
 
 const TokenBoard = ({ group, tokens, selectedId, onSelectToken, onAddToken }) => {
@@ -82,7 +83,7 @@ const TokenBoard = ({ group, tokens, selectedId, onSelectToken, onAddToken }) =>
                 <div className={styles.tokenGrid}>
                     {visibleTokens.map((token) => {
                         const isSelected = token.id === selectedId;
-                        const variableName = "--" + token.group + "-" + token.name;
+                        const variableName = getTokenVariable(token);
 
                         return (
                             <button
